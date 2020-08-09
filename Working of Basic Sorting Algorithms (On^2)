@@ -1,0 +1,84 @@
+#include <iostream>
+#include<cmath>
+#include<algorithm>
+using namespace std;
+
+void bubble (int nums[], int size){
+    for (int i=0; i<size; i++){
+        for (int j=0; j<size; j++){
+            if (nums[j]>nums[j+1])
+            swap(nums[j], nums[j+1]);
+        }
+        cout <<"After pass number " << i+1<< ", elements are : "<< endl;
+        for (int k=0; k<size; k++)
+          cout <<nums[k] << "  ";
+        cout << endl;
+    }
+    cout << "List is now sorted in ascending order"<<endl;
+}
+
+void selection (int nums[], int size){
+    for (int i=0; i<size; i++){
+        int min_index = i;
+        for (int j=i+1; j<size; j++){
+            if (nums[j]<nums[min_index])
+                min_index = j;
+        }
+        swap(nums[min_index], nums[i]);
+        cout <<"After pass number " << i+1<< ", elements are : "<< endl;
+        for (int k=0; k<size; k++)
+          cout <<nums[k] << "  ";
+        cout << endl;
+    } 
+    cout << "List is now sorted in ascending order"<<endl;
+}
+
+void insertion (int nums[], int size){
+    for (int i=1; i<size; i++){
+        int item_to_insert = nums[i];
+        int j = i-1;
+        bool position_not_found = true;
+        while(j>=0 && position_not_found){
+            if (item_to_insert< nums[j]){
+                nums[j+1] = nums[j];
+                j--;
+            }
+            else{
+                position_not_found=false;
+            }
+        }
+        nums[j+1] = item_to_insert;
+        cout <<"After pass number " << i<< ", elements are : "<< endl;
+        for (int k=0; k<size; k++)
+          cout <<nums[k] << "  ";
+        cout << endl;
+    }
+    cout << "List is now sorted in ascending order"<<endl;
+}
+
+int main()
+{
+    int input, size=10, nums[size];
+    cout <<"Welcome to this sorting program. Enter a list of 10 numbers : ";
+    for (int i=0; i<size; i++){
+        cin>>nums[i];
+    }
+    cout << "Please select which sorting algorithm you would like to use: (1-Bubble, 2-Insertion, 3-Selection)";
+    cin>> input;
+    switch (input){
+        case 1: 
+        cout <<"Bubble Sort: "<< endl;
+        bubble(nums, size);
+        break;
+        case 2: 
+        cout << "Insertion Sort: "<<endl;
+        insertion(nums, size);
+        break;
+        case 3: 
+        cout << "Selection Sort: "<<endl;
+        selection(nums, size);
+        break;
+    }
+
+    return 0;
+}
