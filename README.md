@@ -1,2 +1,2 @@
 # Algorithms
-Projects that demonstrate knowledge of algorithms, especially in C++
+Projects that demonstrate knowledge of algorithms
